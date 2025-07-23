@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Samruddhi Hegde</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background-color: #2a0a25;
+      color: #fcddec;
+    }
+
+    .typing::after {
+      content: '|';
+      animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0;
+      }
+    }
+
+    @keyframes fadeSlideUp {
+      0% {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate-reason {
+      opacity: 0;
+      animation: fadeSlideUp 0.4s ease forwards;
+    }
+  </style>
+</head>
+
+<body class="min-h-screen flex flex-col items-center justify-center px-4">
+
+  <!-- Hero Section -->
+  <section class="text-center mb-6 mt-20">
+    <h1 class="text-4xl md:text-6xl font-bold mb-2">Samruddhi Hegde</h1>
+    <p id="bio" class="text-xl italic typing"></p>
+  </section>
+
+  <!-- Socials and Call Section -->
+  <section class="flex flex-wrap justify-center gap-6 mb-12">
+    <a href="https://www.instagram.com/ohnoitsami/" target="_blank" class="hover:scale-110 transition transform text-pink-300">📸 Instagram</a>
+    <a href="https://www.snapchat.com/add/sami.sksksk" target="_blank" class="hover:scale-110 transition transform text-pink-300">👻 Snapchat</a>
+  </section>
+
+  <!-- Comeback Cookie Section -->
+  <section class="mb-12 text-center">
+    <h2 class="text-2xl font-semibold mb-4">Your Comeback Cookie 🍪</h2>
+    <p id="quoteText" class="mb-4 italic text-pink-200">Click to get your comeback 🔥</p>
+    <button onclick="showQuote()" class="bg-pink-500 hover:bg-pink-600 px-6 py-2 rounded-xl text-white font-medium transition">Hit Me</button>
+  </section>
+
+  <!-- Rizz Section -->
+  <section class="mb-12 text-center">
+    <h2 class="text-2xl font-semibold mb-4">Rizz? 😋</h2>
+    <p id="rizzText" class="italic text-pink-200 mb-4">Click for instant rizz 😏</p>
+    <button onclick="showRizz()" class="bg-pink-500 hover:bg-pink-600 px-6 py-2 rounded-xl text-white font-medium transition">Drop Rizz</button>
+  </section>
+
+  <!-- Reasons Unavailable Section -->
+  <section class="mb-12 text-center">
+    <h2 class="text-2xl font-semibold mb-4">Reasons Why I'm Not Available Right Now 🚫</h2>
+    <ul id="reasonList" class="list-disc list-inside text-pink-200 mb-4 hidden"></ul>
+    <button onclick="shuffleReasons()" class="bg-pink-500 hover:bg-pink-600 px-6 py-2 rounded-xl text-white font-medium transition">Why tho?</button>
+  </section>
+
+  <!-- Footer -->
+  <footer class="text-center text-sm text-pink-400 px-4">
+    <p>coolest shawty ever 😎</p>
+  </footer>
+
+  <script>
+    const bio = "Hotter than ur ex better than ur next, try again next season";
+    let index = 0;
+    function typeBio() {
+      if (index < bio.length) {
+        document.getElementById("bio").textContent += bio.charAt(index);
+        index++;
+        setTimeout(typeBio, 40);
+      }
+    }
+    typeBio();
+
+    const quotes = [
+      "Oh sweetie, I’m not a backup plan and definitely not your second choice.",
+      "You're not even on my level — you're WiFi and I’m fiber.",
+      "I don’t chase, I attract. You? You’re just lost in traffic.",
+      "Your opinion? Cute. Irrelevant, but cute.",
+      "Keep talking — you’re making my block list longer and funnier."
+    ];
+
+    function showQuote() {
+      const quoteText = document.getElementById('quoteText');
+      const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+      quoteText.textContent = randomQuote;
+    }
+
+    const rizzLines = [
+      "Are you French? Because Eiffel for you.",
+      "If you were a vegetable, you’d be a cutecumber.",
+      "Are you lightning? Because you just struck my heart.",
+      "You must be a magician, because every time I look at you, everyone else disappears.",
+      "Are you Google? Because you’ve got everything I’ve been searching for."
+    ];
+
+    function showRizz() {
+      const rizzText = document.getElementById('rizzText');
+      const randomRizz = rizzLines[Math.floor(Math.random() * rizzLines.length)];
+      rizzText.textContent = randomRizz;
+    }
+
+    const reasons = [
+      "I have to feed my pet dragon",
+      "Touching grass",
+      "Prolly sleeping",
+      "My ferret needs assistance with homework",
+      "I’m with my elephant g",
+      "With my husband",
+      "My mom said no",
+      "Spijuniro Golubiro",
+      "I’m batwoman",
+      "On a mission to save the world"
+    ];
+
+    function shuffleReasons() {
+      const reasonList = document.getElementById('reasonList');
+      reasonList.classList.remove('hidden');
+      const shuffled = reasons.sort(() => 0.5 - Math.random());
+      reasonList.innerHTML = '';
+      shuffled.forEach((reason, index) => {
+        const li = document.createElement('li');
+        li.textContent = reason;
+        li.classList.add('animate-reason');
+        li.style.animationDelay = `${index * 0.1}s`;
+        reasonList.appendChild(li);
+      });
+    }
+  </script>
+
+</body>
+
+</html>
