@@ -21,6 +21,7 @@
       0%, 100% {
         opacity: 1;
       }
+
       50% {
         opacity: 0;
       }
@@ -31,6 +32,7 @@
         opacity: 0;
         transform: translateY(10px);
       }
+
       100% {
         opacity: 1;
         transform: translateY(0);
@@ -48,35 +50,40 @@
 
   <!-- Hero Section -->
   <section class="text-center mb-6 mt-20">
-    <h1 class="text-4xl md:text-6xl font-bold mb-2">Yo! It’s Sam</h1>
+    <h1 class="text-4xl md:text-6xl font-bold mb-2">Samruddhi Hegde</h1>
     <p id="bio" class="text-xl italic typing"></p>
   </section>
 
-  <!-- Socials and Call Section -->
+  <!-- Socials Section -->
   <section class="flex flex-wrap justify-center gap-6 mb-12">
-    <a href="https://www.instagram.com/ohnoitsami/" target="_blank" class="hover:scale-110 transition transform text-pink-300">📸 Instagram</a>
-    <a href="https://www.snapchat.com/add/sami.sksksk" target="_blank" class="hover:scale-110 transition transform text-pink-300">👻 Snapchat</a>
+    <a href="https://www.instagram.com/ohnoitsami/" target="_blank"
+      class="hover:scale-110 transition transform text-pink-300">📸 Instagram</a>
+    <a href="https://www.snapchat.com/add/sami.sksksk" target="_blank"
+      class="hover:scale-110 transition transform text-pink-300">👻 Snapchat</a>
   </section>
 
-  <!-- Comeback Cookie Section -->
+  <!-- Comeback Cookie -->
   <section class="mb-12 text-center">
     <h2 class="text-2xl font-semibold mb-4">Your Comeback Cookie 🍪</h2>
     <p id="quoteText" class="mb-4 italic text-pink-200">Click to get your comeback 🔥</p>
-    <button onclick="showQuote()" class="bg-pink-500 hover:bg-pink-600 px-6 py-2 rounded-xl text-white font-medium transition">Hit Me</button>
+    <button onclick="showQuote()"
+      class="bg-pink-500 hover:bg-pink-600 px-6 py-2 rounded-xl text-white font-medium transition">Hit Me</button>
   </section>
 
   <!-- Rizz Section -->
   <section class="mb-12 text-center">
     <h2 class="text-2xl font-semibold mb-4">Rizz? 😋</h2>
     <p id="rizzText" class="italic text-pink-200 mb-4">Click for instant rizz 😏</p>
-    <button onclick="showRizz()" class="bg-pink-500 hover:bg-pink-600 px-6 py-2 rounded-xl text-white font-medium transition">Drop Rizz</button>
+    <button onclick="showRizz()"
+      class="bg-pink-500 hover:bg-pink-600 px-6 py-2 rounded-xl text-white font-medium transition">Drop Rizz</button>
   </section>
 
-  <!-- Reasons Unavailable Section -->
+  <!-- Reason Section -->
   <section class="mb-12 text-center">
     <h2 class="text-2xl font-semibold mb-4">Reasons Why I'm Not Available Right Now 🚫</h2>
     <ul id="reasonList" class="list-disc list-inside text-pink-200 mb-4 hidden"></ul>
-    <button onclick="shuffleReasons()" class="bg-pink-500 hover:bg-pink-600 px-6 py-2 rounded-xl text-white font-medium transition">Why tho?</button>
+    <button onclick="shuffleReasons()"
+      class="bg-pink-500 hover:bg-pink-600 px-6 py-2 rounded-xl text-white font-medium transition">Why tho?</button>
   </section>
 
   <!-- Footer -->
@@ -138,17 +145,16 @@
     ];
 
     function shuffleReasons() {
-      const reasonList = document.getElementById('reasonList');
-      reasonList.classList.remove('hidden');
-      const shuffled = reasons.sort(() => 0.5 - Math.random());
-      reasonList.innerHTML = '';
-      shuffled.forEach((reason, index) => {
-        const li = document.createElement('li');
-        li.textContent = reason;
-        li.classList.add('animate-reason');
-        li.style.animationDelay = `${index * 0.1}s`;
-        reasonList.appendChild(li);
-      });
+      const list = document.getElementById('reasonList');
+      list.classList.remove('hidden');
+      list.innerHTML = ""; // Clear previous reason
+
+      const randomReason = reasons[Math.floor(Math.random() * reasons.length)];
+
+      const li = document.createElement('li');
+      li.textContent = randomReason;
+      li.classList.add('animate-reason', 'mb-1');
+      list.appendChild(li);
     }
   </script>
 
